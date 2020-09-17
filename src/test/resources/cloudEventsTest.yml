@@ -1,0 +1,42 @@
+asyncapi: 2.0.0-rc1
+id: urn:com.asyncapi.examples.user
+defaultContentType: application/json
+info:
+  title: User service
+  version: 1.6.3
+channels:
+  user/signedup:
+    x-arkea: testarkea
+    publish:
+      message:
+        payload:
+          type: object
+          properties:
+            specversion:
+              type: string
+              enum: ['0.2']
+            type:
+              type: string
+              example: com.github.pull.create
+            source:
+              type: string
+              format: uri
+              example: urn:com.asyncapi.examples.user
+            id:
+              type: string
+              example: 'A234-1234-1234'
+            time:
+              type: string
+              format: date-time
+              example: 2018-04-05T17:31:00Z
+            contenttype:
+              type: string
+              example: 'application/json'
+            data:
+              type: object
+              properties:
+                fullName:
+                  type: string
+                email:
+                  type: string
+                  format: email
