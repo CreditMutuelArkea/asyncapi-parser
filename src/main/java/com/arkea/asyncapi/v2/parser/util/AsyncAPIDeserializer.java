@@ -2825,7 +2825,7 @@ public class AsyncAPIDeserializer {
         /** Id of the consumer group. */
         final JsonNode clientNode = node.get("clientId");
         Optional<Schema<?>> clientSchema;
-        if(JsonNodeType.STRING.equals(Optional.ofNullable(groupNode).map(JsonNode::getNodeType).orElse(JsonNodeType.MISSING))) {
+        if(JsonNodeType.STRING.equals(Optional.ofNullable(clientNode).map(JsonNode::getNodeType).orElse(JsonNodeType.MISSING))) {
             clientSchema = Optional.ofNullable(getString("clientId", node, false, location, result))
                     .map(str -> new StringSchema().addEnumItem(str));
         } else {
