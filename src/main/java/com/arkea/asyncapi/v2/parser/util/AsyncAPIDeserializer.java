@@ -24,6 +24,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.arkea.asyncapi.v2.models.media.StringSchema;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -2809,18 +2810,29 @@ public class AsyncAPIDeserializer {
         final KafkaOperationBinding operationBinding = new KafkaOperationBinding();
 
         /** Id of the consumer group. */
-        ObjectNode obj = getObject("groupId", node, false, location, result);
-        if (obj != null) {
-            operationBinding.setGroupId(getSchema(obj, String.format("%s.%s", location, "groupId"), result));
+        final JsonNode groupNode = node.get("groupId");
+        Optional<Schema<?>> groupSchema;
+        if(JsonNodeType.STRING.equals(Optional.ofNullable(groupNode).map(JsonNode::getNodeType).orElse(JsonNodeType.MISSING))) {
+            groupSchema = Optional.ofNullable(getString("groupId", node, false, location, result))
+                    .map(str -> new StringSchema().addEnumItem(str));
+        } else {
+            groupSchema = Optional.ofNullable(getObject("groupId", node, false, location, result))
+                    .map(obj -> getSchema(obj, String.format("%s.%s", location, "groupId"), result));
         }
+        groupSchema.ifPresent(operationBinding::setGroupId);
+
 
         /** Id of the consumer group. */
-
-        final JsonNode valueObject = node.get("clientId");
-        obj = getObject("clientId", node, false, location, result);
-        if (obj != null) {
-            operationBinding.setClientId(getSchema(obj, String.format("%s.%s", location, "clientId"), result));
+        final JsonNode clientNode = node.get("clientId");
+        Optional<Schema<?>> clientSchema;
+        if(JsonNodeType.STRING.equals(Optional.ofNullable(groupNode).map(JsonNode::getNodeType).orElse(JsonNodeType.MISSING))) {
+            clientSchema = Optional.ofNullable(getString("clientId", node, false, location, result))
+                    .map(str -> new StringSchema().addEnumItem(str));
+        } else {
+            clientSchema = Optional.ofNullable(getObject("clientId", node, false, location, result))
+                    .map(obj -> getSchema(obj, String.format("%s.%s", location, "clientId"), result));
         }
+        clientSchema.ifPresent(operationBinding::setClientId);
 
         /** The version of this binding. If omitted, "latest" MUST be assumed. */
         final String value = getString("bindingVersion", node, false, location, result);
