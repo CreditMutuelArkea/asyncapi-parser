@@ -5,13 +5,7 @@ package com.arkea.asyncapi.v2.parser.models;
  */
 public enum RefType {
 
-
-    COMPONENTS("#/components/"),
-    SCHEMAS("#/components/schemas/"),
-    OPERATIONTRAITS("#/components/operationTraits/"),
-    MESSAGESTRAITS("#/components/messageTraits/"),
-    MESSAGES("#/components/messages/");
-
+    COMPONENTS("#/components/"), SCHEMAS("#/components/schemas/"), OPERATIONTRAITS("#/components/operationTraits/"), MESSAGESTRAITS("#/components/messageTraits/"), MESSAGES("#/components/messages/");
 
     private final String internalPrefix;
 

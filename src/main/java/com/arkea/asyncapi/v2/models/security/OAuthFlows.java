@@ -9,12 +9,17 @@ import java.util.Objects;
  */
 
 public class OAuthFlows {
+
     private OAuthFlow implicit = null;
+
     private OAuthFlow password = null;
+
     private OAuthFlow clientCredentials = null;
+
     private OAuthFlow authorizationCode = null;
-	/** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
-	 *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
+
+    /** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
+     *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
     private java.util.Map<String, Object> extensions = null;
 
     /**
@@ -103,10 +108,10 @@ public class OAuthFlows {
         }
         final OAuthFlows oauthFlows = (OAuthFlows) o;
         return Objects.equals(this.implicit, oauthFlows.implicit) &&
-                Objects.equals(this.password, oauthFlows.password) &&
-                Objects.equals(this.clientCredentials, oauthFlows.clientCredentials) &&
-                Objects.equals(this.authorizationCode, oauthFlows.authorizationCode) &&
-                Objects.equals(this.extensions, oauthFlows.extensions);
+                        Objects.equals(this.password, oauthFlows.password) &&
+                        Objects.equals(this.clientCredentials, oauthFlows.clientCredentials) &&
+                        Objects.equals(this.authorizationCode, oauthFlows.authorizationCode) &&
+                        Objects.equals(this.extensions, oauthFlows.extensions);
     }
 
     @Override
@@ -162,4 +167,3 @@ public class OAuthFlows {
     }
 
 }
-

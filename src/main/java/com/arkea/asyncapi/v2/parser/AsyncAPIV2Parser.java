@@ -7,17 +7,14 @@ import com.arkea.asyncapi.v2.parser.exception.SwaggerParserExtension;
 import com.arkea.asyncapi.v2.parser.models.AsyncParseResult;
 import com.arkea.asyncapi.v2.parser.models.ParseOptions;
 import com.arkea.asyncapi.v2.parser.util.AsyncAPIDeserializer;
-
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+public class AsyncAPIV2Parser implements SwaggerParserExtension {
 
-public class AsyncAPIV2Parser implements SwaggerParserExtension{
     private static ObjectMapper JSON_MAPPER, YAML_MAPPER;
+
     /**
      * Encoding of the resource content with AsyncAPI spec to parse.
      */
@@ -28,8 +25,7 @@ public class AsyncAPIV2Parser implements SwaggerParserExtension{
         YAML_MAPPER = ObjectMapperFactory.createYaml();
     }
 
-
-    public AsyncParseResult parseJsonNode( final JsonNode node) {
+    public AsyncParseResult parseJsonNode(final JsonNode node) {
         return new AsyncAPIDeserializer().deserialize(node);
     }
 
@@ -40,7 +36,7 @@ public class AsyncAPIV2Parser implements SwaggerParserExtension{
     }
 
     @Override
-	public AsyncParseResult readContents(final String swaggerAsString, final ParseOptions options) {
+    public AsyncParseResult readContents(final String swaggerAsString, final ParseOptions options) {
         if (swaggerAsString == null || swaggerAsString.trim().isEmpty()) {
             return AsyncParseResult.ofError("Null or empty definition");
         }
@@ -48,7 +44,7 @@ public class AsyncAPIV2Parser implements SwaggerParserExtension{
         try {
             final ObjectMapper mapper = getRightMapper(swaggerAsString);
             final JsonNode rootNode = mapper.readTree(swaggerAsString);
-            final AsyncParseResult result = parseJsonNode( rootNode);
+            final AsyncParseResult result = parseJsonNode(rootNode);
             return result;
         } catch (final JsonProcessingException e) {
             final String message = getParseErrorMessage(e.getOriginalMessage());

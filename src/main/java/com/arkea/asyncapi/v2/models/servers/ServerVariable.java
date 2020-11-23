@@ -11,14 +11,18 @@ import java.util.Objects;
  */
 
 public class ServerVariable {
-	/** An enumeration of string values to be used if the substitution options are from a limited set. */
+
+    /** An enumeration of string values to be used if the substitution options are from a limited set. */
     private List<String> _enum = null;
+
     /** The default value to use for substitution, and to send, if an alternate value is not supplied. */
     private String _default = null;
+
     /** An optional description for the server variable. CommonMark syntax MAY be used for rich text representation. */
     private String description = null;
-	/** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
-	 *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
+
+    /** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
+     *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
     private java.util.Map<String, Object> extensions = null;
 
     /**
@@ -96,9 +100,9 @@ public class ServerVariable {
         }
         final ServerVariable serverVariable = (ServerVariable) o;
         return Objects.equals(this._enum, serverVariable._enum) &&
-                Objects.equals(this._default, serverVariable._default) &&
-                Objects.equals(this.description, serverVariable.description) &&
-                Objects.equals(this.extensions, serverVariable.extensions);
+                        Objects.equals(this._default, serverVariable._default) &&
+                        Objects.equals(this.description, serverVariable.description) &&
+                        Objects.equals(this.extensions, serverVariable.extensions);
     }
 
     @Override
@@ -153,4 +157,3 @@ public class ServerVariable {
     }
 
 }
-

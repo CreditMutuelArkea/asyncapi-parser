@@ -74,4 +74,3 @@ public class BooleanSchema extends Schema<Boolean> {
         return sb.toString();
     }
 }
-

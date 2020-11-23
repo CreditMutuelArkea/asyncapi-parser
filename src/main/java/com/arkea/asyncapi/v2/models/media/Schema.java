@@ -1,6 +1,5 @@
 package com.arkea.asyncapi.v2.models.media;
 
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,7 +10,6 @@ import java.util.Objects;
 
 import com.arkea.asyncapi.v2.models.ExternalDocumentation;
 
-
 /**
  * Schema
  *
@@ -20,54 +18,77 @@ import com.arkea.asyncapi.v2.models.ExternalDocumentation;
 
 public class Schema<T> {
 
-	/** //The default value represents what would be assumed by the consumer of the input as the value of the schema if one is not provided.
-	 *  Unlike JSON Schema, the value MUST conform to the defined type for the Schema Object defined at the same level.
-	 *   For example, of type is string, then default can be "foo" but cannot be 1. */
+    /** //The default value represents what would be assumed by the consumer of the input as the value of the schema if one is not provided.
+     *  Unlike JSON Schema, the value MUST conform to the defined type for the Schema Object defined at the same level.
+     *   For example, of type is string, then default can be "foo" but cannot be 1. */
     protected T _default;
 
-//TODO finir de gerer tous les types
-
+    // TODO finir de gerer tous les types
 
     private String title = null;
+
     private String type = null;
+
     private List<String> required = null;
+
     private BigDecimal multipleOf = null;
+
     private BigDecimal maximum = null;
+
     private Boolean exclusiveMaximum = null;
+
     private BigDecimal minimum = null;
+
     private Boolean exclusiveMinimum = null;
+
     private Integer maxLength = null;
+
     private Integer minLength = null;
+
     /** This string SHOULD be a valid regular expression, according to the ECMA 262 regular expression dialect */
     private String pattern = null;
+
     private Integer maxItems = null;
+
     private Integer minItems = null;
+
     private Boolean uniqueItems = null;
+
     private Integer maxProperties = null;
+
     private Integer minProperties = null;
+
     protected List<T> _enum = null;
-//    const
+
+    // const
     protected T example = null;
-//  if / then / else
+
+    // if / then / else
     private Boolean readOnly = null;
+
     private Boolean writeOnly = null;
+
     private Map<String, Schema> properties = null;
-//  patternProperties
+
+    // patternProperties
     private Object additionalProperties = null;
-//  additionalItems
-//  items
-//  propertyNames
-//  contains
-//  allOf
-//  oneOf
-//  anyOf
-  private Schema not = null;
+
+    // additionalItems
+    // items
+    // propertyNames
+    // contains
+    // allOf
+    // oneOf
+    // anyOf
+    private Schema not = null;
 
     /** CommonMark syntax can be used for rich text representation. */
     private String description = null;
+
     /** See Data Type Formats for further details.
      * While relying on JSON Schema's defined formats, the AsyncAPI Specification offers a few additional predefined formats. */
     private String format = null;
+
     /** Allows for an external definition of this channel item. */
     private String $ref = null;
 
@@ -75,15 +96,16 @@ public class Schema<T> {
      *  The property name used MUST be defined at this schema and it MUST be in the required property list.
      *   When used, the value MUST be the name of this schema or any schema that inherits it. See Composition and Inheritance for more details. */
     private String discriminator = null;
+
     /** Additional external documentation for this schema. */
     private ExternalDocumentation externalDocs = null;
+
     /** Specifies that a schema is deprecated and SHOULD be transitioned out of usage. Default value is false. */
     private Boolean deprecated = null;
-	/** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
-	 *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
+
+    /** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
+     *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
     private Map<String, Object> extensions = null;
-
-
 
     public Schema() {
     }
@@ -93,26 +115,25 @@ public class Schema<T> {
         this.format = format;
     }
 
-
     /**
      * returns the discriminator property from a Schema instance.
      *
      * @return
      */
     public String getDiscriminator() {
-		return this.discriminator;
-	}
+        return this.discriminator;
+    }
 
-	/**
-	 * Set the discriminator property to Schema instance.
-	 *
-	 * @param discriminator
-	 */
-	public void setDiscriminator(final String discriminator) {
-		this.discriminator = discriminator;
-	}
+    /**
+     * Set the discriminator property to Schema instance.
+     *
+     * @param discriminator
+     */
+    public void setDiscriminator(final String discriminator) {
+        this.discriminator = discriminator;
+    }
 
-	/**
+    /**
      * returns the title property from a Schema instance.
      *
      * @return String title
@@ -745,43 +766,43 @@ public class Schema<T> {
         }
         final Schema schema = (Schema) o;
         return Objects.equals(this.title, schema.title) &&
-                Objects.equals(this.multipleOf, schema.multipleOf) &&
-                Objects.equals(this.maximum, schema.maximum) &&
-                Objects.equals(this.exclusiveMaximum, schema.exclusiveMaximum) &&
-                Objects.equals(this.minimum, schema.minimum) &&
-                Objects.equals(this.exclusiveMinimum, schema.exclusiveMinimum) &&
-                Objects.equals(this.maxLength, schema.maxLength) &&
-                Objects.equals(this.minLength, schema.minLength) &&
-                Objects.equals(this.pattern, schema.pattern) &&
-                Objects.equals(this.maxItems, schema.maxItems) &&
-                Objects.equals(this.minItems, schema.minItems) &&
-                Objects.equals(this.uniqueItems, schema.uniqueItems) &&
-                Objects.equals(this.maxProperties, schema.maxProperties) &&
-                Objects.equals(this.minProperties, schema.minProperties) &&
-                Objects.equals(this.required, schema.required) &&
-                Objects.equals(this.type, schema.type) &&
-                Objects.equals(this.not, schema.not) &&
-                Objects.equals(this.properties, schema.properties) &&
-                Objects.equals(this.additionalProperties, schema.additionalProperties) &&
-                Objects.equals(this.description, schema.description) &&
-                Objects.equals(this.format, schema.format) &&
-                Objects.equals(this.$ref, schema.$ref) &&
-                Objects.equals(this.readOnly, schema.readOnly) &&
-                Objects.equals(this.writeOnly, schema.writeOnly) &&
-                Objects.equals(this.example, schema.example) &&
-                Objects.equals(this.externalDocs, schema.externalDocs) &&
-                Objects.equals(this.deprecated, schema.deprecated) &&
-                Objects.equals(this.extensions, schema.extensions) &&
-                Objects.equals(this.discriminator, schema.discriminator) &&
-                Objects.equals(this._enum, schema._enum) &&
-                Objects.equals(this._default, schema._default);
+                        Objects.equals(this.multipleOf, schema.multipleOf) &&
+                        Objects.equals(this.maximum, schema.maximum) &&
+                        Objects.equals(this.exclusiveMaximum, schema.exclusiveMaximum) &&
+                        Objects.equals(this.minimum, schema.minimum) &&
+                        Objects.equals(this.exclusiveMinimum, schema.exclusiveMinimum) &&
+                        Objects.equals(this.maxLength, schema.maxLength) &&
+                        Objects.equals(this.minLength, schema.minLength) &&
+                        Objects.equals(this.pattern, schema.pattern) &&
+                        Objects.equals(this.maxItems, schema.maxItems) &&
+                        Objects.equals(this.minItems, schema.minItems) &&
+                        Objects.equals(this.uniqueItems, schema.uniqueItems) &&
+                        Objects.equals(this.maxProperties, schema.maxProperties) &&
+                        Objects.equals(this.minProperties, schema.minProperties) &&
+                        Objects.equals(this.required, schema.required) &&
+                        Objects.equals(this.type, schema.type) &&
+                        Objects.equals(this.not, schema.not) &&
+                        Objects.equals(this.properties, schema.properties) &&
+                        Objects.equals(this.additionalProperties, schema.additionalProperties) &&
+                        Objects.equals(this.description, schema.description) &&
+                        Objects.equals(this.format, schema.format) &&
+                        Objects.equals(this.$ref, schema.$ref) &&
+                        Objects.equals(this.readOnly, schema.readOnly) &&
+                        Objects.equals(this.writeOnly, schema.writeOnly) &&
+                        Objects.equals(this.example, schema.example) &&
+                        Objects.equals(this.externalDocs, schema.externalDocs) &&
+                        Objects.equals(this.deprecated, schema.deprecated) &&
+                        Objects.equals(this.extensions, schema.extensions) &&
+                        Objects.equals(this.discriminator, schema.discriminator) &&
+                        Objects.equals(this._enum, schema._enum) &&
+                        Objects.equals(this._default, schema._default);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.title, this.multipleOf, this.maximum, this.exclusiveMaximum, this.minimum, this.exclusiveMinimum, this.maxLength, this.minLength, this.pattern, this.maxItems,
-                this.minItems, this.uniqueItems, this.maxProperties, this.minProperties, this.required, this.type, this.not, this.properties, this.additionalProperties, this.description, this.format, this.$ref,
-                this.readOnly, this.writeOnly, this.example, this.externalDocs, this.deprecated, this.extensions, this.discriminator, this._enum, this._default);
+                        this.minItems, this.uniqueItems, this.maxProperties, this.minProperties, this.required, this.type, this.not, this.properties, this.additionalProperties, this.description, this.format, this.$ref,
+                        this.readOnly, this.writeOnly, this.example, this.externalDocs, this.deprecated, this.extensions, this.discriminator, this._enum, this._default);
     }
 
     /**
@@ -791,13 +812,13 @@ public class Schema<T> {
      * @param Object value
      */
     public void addExtension(final String name, final Object value) {
-    	if (name == null || name.isEmpty() || !name.startsWith("x-")) {
-    		return;
-    	}
-    	if (this.extensions == null) {
-    		this.extensions = new java.util.LinkedHashMap<>();
-    	}
-    	this.extensions.put(name, value);
+        if (name == null || name.isEmpty() || !name.startsWith("x-")) {
+            return;
+        }
+        if (this.extensions == null) {
+            this.extensions = new java.util.LinkedHashMap<>();
+        }
+        this.extensions.put(name, value);
     }
 
     /**
@@ -806,7 +827,7 @@ public class Schema<T> {
      * @param Map<String, Object> extensions
      */
     public void setExtensions(final java.util.Map<String, Object> extensions) {
-    	this.extensions = extensions;
+        this.extensions = extensions;
     }
 
     /**
@@ -820,7 +841,11 @@ public class Schema<T> {
         return this;
     }
 
-    @Override
+    public Map<String, Object> getExtensions() {
+		return extensions;
+	}
+
+	@Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append("class Schema {\n");
@@ -868,4 +893,3 @@ public class Schema<T> {
     }
 
 }
-

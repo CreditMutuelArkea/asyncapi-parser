@@ -29,243 +29,252 @@ import com.arkea.asyncapi.v2.models.servers.ServerBinding;
 
 public class Components {
 
-	/** An object to hold reusable Schema Objects. */
-	private Map<String, Schema<?>> schemas = null;
-	/** An object to hold reusable Message Objects. */
-	private Map<String, Message> messages = null;
-	/** An object to hold reusable Security Scheme Objects. */
-	private Map<String, SecurityScheme> securitySchemes = null;
-	/** An object to hold reusable Parameter Objects. */
-	private Map<String, Parameter> parameters = null;
-	/** An object to hold reusable Correlation ID Objects. */
-	private Map<String, CorrelationID> correlationIds = null;
-	/** An object to hold reusable Operation Trait Objects. */
-	private Map<String, OperationTrait> operationTraits = null;
-	/** An object to hold reusable  Message Trait Objects. */
-	private Map<String, MessageTrait> messageTraits = null;
-	/** An object to hold reusable Server Binding Objects. */
-	private Map<String, ServerBinding> serverBindings = null;
-	/** An object to hold reusable Channel Binding Objects. */
-	private Map<String, ChannelBindings> channelBindings = null;
-	/** An object to hold reusable Operation Binding Objects. */
-	private Map<String, OperationBinding> operationBindings = null;
-	/** An object to hold reusable Message Binding Objects. */
-	private Map<String, MessageBinding> messageBindings = null;
+    /** An object to hold reusable Schema Objects. */
+    private Map<String, Schema<?>> schemas = null;
 
-	/**
-	 * Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-,
-	 * for example, x-internal-id. The value can be null, a primitive, an array or
-	 * an object. Can have any valid JSON format value.
-	 */
-	private Map<String, Object> extensions = null;
+    /** An object to hold reusable Message Objects. */
+    private Map<String, Message> messages = null;
 
-	public Components() {
-		super();
-		this.operationBindings = new LinkedHashMap<String, OperationBinding>();
-		this.operationBindings.put("test", new HttpOperationBinding());
-	}
+    /** An object to hold reusable Security Scheme Objects. */
+    private Map<String, SecurityScheme> securitySchemes = null;
 
-	/**
-	 * returns the schemas property from a Components instance.
-	 *
-	 * @return Map&lt;String, Schema&gt; schemas
-	 **/
+    /** An object to hold reusable Parameter Objects. */
+    private Map<String, Parameter> parameters = null;
 
-	public Map<String, Schema<?>> getSchemas() {
-		return this.schemas;
-	}
+    /** An object to hold reusable Correlation ID Objects. */
+    private Map<String, CorrelationID> correlationIds = null;
 
-	public void setSchemas(final Map<String, Schema<?>> schemas) {
-		this.schemas = schemas;
-	}
+    /** An object to hold reusable Operation Trait Objects. */
+    private Map<String, OperationTrait> operationTraits = null;
 
-	public Components schemas(final Map<String, Schema<?>> schemas) {
-		this.schemas = schemas;
-		return this;
-	}
+    /** An object to hold reusable  Message Trait Objects. */
+    private Map<String, MessageTrait> messageTraits = null;
 
-	public Components addSchemas(final String key, final Schema<?> schemasItem) {
-		if (this.schemas == null) {
-			this.schemas = new LinkedHashMap<>();
-		}
-		this.schemas.put(key, schemasItem);
-		return this;
-	}
+    /** An object to hold reusable Server Binding Objects. */
+    private Map<String, ServerBinding> serverBindings = null;
 
-	public Map<String, Message> getMessages() {
-		return this.messages;
-	}
+    /** An object to hold reusable Channel Binding Objects. */
+    private Map<String, ChannelBindings> channelBindings = null;
 
-	public void setMessages(final Map<String, Message> messages) {
-		this.messages = messages;
-	}
+    /** An object to hold reusable Operation Binding Objects. */
+    private Map<String, OperationBinding> operationBindings = null;
 
-	public Map<String, CorrelationID> getCorrelationIds() {
-		return this.correlationIds;
-	}
+    /** An object to hold reusable Message Binding Objects. */
+    private Map<String, MessageBinding> messageBindings = null;
 
-	public void setCorrelationIds(final Map<String, CorrelationID> correlationIds) {
-		this.correlationIds = correlationIds;
-	}
+    /**
+     * Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-,
+     * for example, x-internal-id. The value can be null, a primitive, an array or
+     * an object. Can have any valid JSON format value.
+     */
+    private Map<String, Object> extensions = null;
 
-	public Map<String, OperationTrait> getOperationTraits() {
-		return this.operationTraits;
-	}
+    public Components() {
+        super();
+    }
 
-	public void setOperationTraits(final Map<String, OperationTrait> operationTraits) {
-		this.operationTraits = operationTraits;
-	}
+    /**
+     * returns the schemas property from a Components instance.
+     *
+     * @return Map&lt;String, Schema&gt; schemas
+     **/
 
-	public Map<String, MessageTrait> getMessageTraits() {
-		return this.messageTraits;
-	}
+    public Map<String, Schema<?>> getSchemas() {
+        return this.schemas;
+    }
 
-	public void setMessageTraits(final Map<String, MessageTrait> messageTraits) {
-		this.messageTraits = messageTraits;
-	}
+    public void setSchemas(final Map<String, Schema<?>> schemas) {
+        this.schemas = schemas;
+    }
 
-	public Map<String, ServerBinding> getServerBindings() {
-		return this.serverBindings;
-	}
+    public Components schemas(final Map<String, Schema<?>> schemas) {
+        this.schemas = schemas;
+        return this;
+    }
 
-	public void setServerBindings(final Map<String, ServerBinding> serverBindings) {
-		this.serverBindings = serverBindings;
-	}
+    public Components addSchemas(final String key, final Schema<?> schemasItem) {
+        if (this.schemas == null) {
+            this.schemas = new LinkedHashMap<>();
+        }
+        this.schemas.put(key, schemasItem);
+        return this;
+    }
 
-	public Map<String, ChannelBindings> getChannelBindings() {
-		return this.channelBindings;
-	}
+    public Map<String, Message> getMessages() {
+        return this.messages;
+    }
 
-	public void setChannelBindings(final Map<String, ChannelBindings> channelBindings) {
-		this.channelBindings = channelBindings;
-	}
+    public void setMessages(final Map<String, Message> messages) {
+        this.messages = messages;
+    }
 
-	public Map<String, OperationBinding> getOperationBindings() {
-		return this.operationBindings;
-	}
+    public Map<String, CorrelationID> getCorrelationIds() {
+        return this.correlationIds;
+    }
 
-	public void setOperationBindings(final Map<String, OperationBinding> operationBindings) {
-		this.operationBindings = operationBindings;
-	}
+    public void setCorrelationIds(final Map<String, CorrelationID> correlationIds) {
+        this.correlationIds = correlationIds;
+    }
 
-	public Map<String, MessageBinding> getMessageBindings() {
-		return this.messageBindings;
-	}
+    public Map<String, OperationTrait> getOperationTraits() {
+        return this.operationTraits;
+    }
 
-	public void setMessageBindings(final Map<String, MessageBinding> messageBindings) {
-		this.messageBindings = messageBindings;
-	}
+    public void setOperationTraits(final Map<String, OperationTrait> operationTraits) {
+        this.operationTraits = operationTraits;
+    }
 
-	/**
-	 * returns the parameters property from a Components instance.
-	 *
-	 * @return Map&lt;String, Parameter&gt; parameters
-	 **/
+    public Map<String, MessageTrait> getMessageTraits() {
+        return this.messageTraits;
+    }
 
-	public Map<String, Parameter> getParameters() {
-		return this.parameters;
-	}
+    public void setMessageTraits(final Map<String, MessageTrait> messageTraits) {
+        this.messageTraits = messageTraits;
+    }
 
-	public void setParameters(final Map<String, Parameter> parameters) {
-		this.parameters = parameters;
-	}
+    public Map<String, ServerBinding> getServerBindings() {
+        return this.serverBindings;
+    }
 
-	public Components parameters(final Map<String, Parameter> parameters) {
-		this.parameters = parameters;
-		return this;
-	}
+    public void setServerBindings(final Map<String, ServerBinding> serverBindings) {
+        this.serverBindings = serverBindings;
+    }
 
-	public Components addParameters(final String key, final Parameter parametersItem) {
-		if (this.parameters == null) {
-			this.parameters = new LinkedHashMap<>();
-		}
-		this.parameters.put(key, parametersItem);
-		return this;
-	}
+    public Map<String, ChannelBindings> getChannelBindings() {
+        return this.channelBindings;
+    }
 
-	/**
-	 * returns the securitySchemes property from a Components instance.
-	 *
-	 * @return Map&lt;String, SecurityScheme&gt; securitySchemes
-	 **/
+    public void setChannelBindings(final Map<String, ChannelBindings> channelBindings) {
+        this.channelBindings = channelBindings;
+    }
 
-	public Map<String, SecurityScheme> getSecuritySchemes() {
-		return this.securitySchemes;
-	}
+    public Map<String, OperationBinding> getOperationBindings() {
+        return this.operationBindings;
+    }
 
-	public void setSecuritySchemes(final Map<String, SecurityScheme> securitySchemes) {
-		this.securitySchemes = securitySchemes;
-	}
+    public void setOperationBindings(final Map<String, OperationBinding> operationBindings) {
+        this.operationBindings = operationBindings;
+    }
 
-	public Components securitySchemes(final Map<String, SecurityScheme> securitySchemes) {
-		this.securitySchemes = securitySchemes;
-		return this;
-	}
+    public Map<String, MessageBinding> getMessageBindings() {
+        return this.messageBindings;
+    }
 
-	public Components addSecuritySchemes(final String key, final SecurityScheme securitySchemesItem) {
-		if (this.securitySchemes == null) {
-			this.securitySchemes = new LinkedHashMap<>();
-		}
-		this.securitySchemes.put(key, securitySchemesItem);
-		return this;
-	}
+    public void setMessageBindings(final Map<String, MessageBinding> messageBindings) {
+        this.messageBindings = messageBindings;
+    }
 
-	public java.util.Map<String, Object> getExtensions() {
-		return this.extensions;
-	}
+    /**
+     * returns the parameters property from a Components instance.
+     *
+     * @return Map&lt;String, Parameter&gt; parameters
+     **/
 
-	public void addExtension(final String name, final Object value) {
-		if (name == null || name.isEmpty() || !name.startsWith("x-")) {
-			return;
-		}
-		if (this.extensions == null) {
-			this.extensions = new java.util.LinkedHashMap<>();
-		}
-		this.extensions.put(name, value);
-	}
+    public Map<String, Parameter> getParameters() {
+        return this.parameters;
+    }
 
-	public void setExtensions(final java.util.Map<String, Object> extensions) {
-		this.extensions = extensions;
-	}
+    public void setParameters(final Map<String, Parameter> parameters) {
+        this.parameters = parameters;
+    }
 
-	public Components extensions(final java.util.Map<String, Object> extensions) {
-		this.extensions = extensions;
-		return this;
-	}
+    public Components parameters(final Map<String, Parameter> parameters) {
+        this.parameters = parameters;
+        return this;
+    }
 
-//    @Override
-//    public String toString() {
-//        StringBuilder sb = new StringBuilder();
-//        sb.append("class Components {\n");
-//
-//        sb.append("    schemas: ").append(toIndentedString(schemas)).append("\n");
-//        sb.append("    responses: ").append(toIndentedString(responses)).append("\n");
-//        sb.append("    parameters: ").append(toIndentedString(parameters)).append("\n");
-//        sb.append("    examples: ").append(toIndentedString(examples)).append("\n");
-//        sb.append("    requestBodies: ").append(toIndentedString(requestBodies)).append("\n");
-//        sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
-//        sb.append("    securitySchemes: ").append(toIndentedString(securitySchemes)).append("\n");
-//        sb.append("    links: ").append(toIndentedString(links)).append("\n");
-//        sb.append("    callbacks: ").append(toIndentedString(callbacks)).append("\n");
-//        sb.append("}");
-//        return sb.toString();
-//    }
+    public Components addParameters(final String key, final Parameter parametersItem) {
+        if (this.parameters == null) {
+            this.parameters = new LinkedHashMap<>();
+        }
+        this.parameters.put(key, parametersItem);
+        return this;
+    }
 
-	@Override
-	public String toString() {
-		return "Components [schemas=" + this.schemas + ", messages=" + this.messages + ", securitySchemes=" + this.securitySchemes + ", parameters=" + this.parameters + ", correlationIds=" + this.correlationIds + ", operationTraits=" + this.operationTraits + ", messageTraits=" + this.messageTraits + ", serverBindings="
-				+ this.serverBindings + ", channelBindings=" + this.channelBindings + ", operationBindings=" + this.operationBindings + ", messageBindings=" + this.messageBindings + ", extensions=" + this.extensions + "]";
-	}
+    /**
+     * returns the securitySchemes property from a Components instance.
+     *
+     * @return Map&lt;String, SecurityScheme&gt; securitySchemes
+     **/
 
-	/**
-	 * Convert the given object to string with each line indented by 4 spaces
-	 * (except the first line).
-	 */
-	private String toIndentedString(final java.lang.Object o) {
-		if (o == null) {
-			return "null";
-		}
-		return o.toString().replace("\n", "\n    ");
-	}
+    public Map<String, SecurityScheme> getSecuritySchemes() {
+        return this.securitySchemes;
+    }
+
+    public void setSecuritySchemes(final Map<String, SecurityScheme> securitySchemes) {
+        this.securitySchemes = securitySchemes;
+    }
+
+    public Components securitySchemes(final Map<String, SecurityScheme> securitySchemes) {
+        this.securitySchemes = securitySchemes;
+        return this;
+    }
+
+    public Components addSecuritySchemes(final String key, final SecurityScheme securitySchemesItem) {
+        if (this.securitySchemes == null) {
+            this.securitySchemes = new LinkedHashMap<>();
+        }
+        this.securitySchemes.put(key, securitySchemesItem);
+        return this;
+    }
+
+    public java.util.Map<String, Object> getExtensions() {
+        return this.extensions;
+    }
+
+    public void addExtension(final String name, final Object value) {
+        if (name == null || name.isEmpty() || !name.startsWith("x-")) {
+            return;
+        }
+        if (this.extensions == null) {
+            this.extensions = new java.util.LinkedHashMap<>();
+        }
+        this.extensions.put(name, value);
+    }
+
+    public void setExtensions(final java.util.Map<String, Object> extensions) {
+        this.extensions = extensions;
+    }
+
+    public Components extensions(final java.util.Map<String, Object> extensions) {
+        this.extensions = extensions;
+        return this;
+    }
+
+    // @Override
+    // public String toString() {
+    // StringBuilder sb = new StringBuilder();
+    // sb.append("class Components {\n");
+    //
+    // sb.append(" schemas: ").append(toIndentedString(schemas)).append("\n");
+    // sb.append(" responses: ").append(toIndentedString(responses)).append("\n");
+    // sb.append(" parameters: ").append(toIndentedString(parameters)).append("\n");
+    // sb.append(" examples: ").append(toIndentedString(examples)).append("\n");
+    // sb.append(" requestBodies: ").append(toIndentedString(requestBodies)).append("\n");
+    // sb.append(" headers: ").append(toIndentedString(headers)).append("\n");
+    // sb.append(" securitySchemes: ").append(toIndentedString(securitySchemes)).append("\n");
+    // sb.append(" links: ").append(toIndentedString(links)).append("\n");
+    // sb.append(" callbacks: ").append(toIndentedString(callbacks)).append("\n");
+    // sb.append("}");
+    // return sb.toString();
+    // }
+
+    @Override
+    public String toString() {
+        return "Components [schemas=" + this.schemas + ", messages=" + this.messages + ", securitySchemes=" + this.securitySchemes + ", parameters=" + this.parameters + ", correlationIds=" + this.correlationIds + ", operationTraits=" + this.operationTraits + ", messageTraits=" + this.messageTraits
+                        + ", serverBindings="
+                        + this.serverBindings + ", channelBindings=" + this.channelBindings + ", operationBindings=" + this.operationBindings + ", messageBindings=" + this.messageBindings + ", extensions=" + this.extensions + "]";
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private String toIndentedString(final java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 
 }

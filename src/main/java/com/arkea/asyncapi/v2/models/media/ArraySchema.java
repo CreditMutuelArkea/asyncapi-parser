@@ -7,6 +7,7 @@ import java.util.Objects;
  */
 
 public class ArraySchema extends Schema<Object> {
+
     private Schema<?> items = null;
 
     public ArraySchema() {
@@ -48,7 +49,7 @@ public class ArraySchema extends Schema<Object> {
         }
         final ArraySchema arraySchema = (ArraySchema) o;
         return Objects.equals(this.items, arraySchema.items) &&
-                super.equals(o);
+                        super.equals(o);
     }
 
     @Override

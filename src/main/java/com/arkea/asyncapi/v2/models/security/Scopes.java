@@ -13,15 +13,17 @@ import java.util.Objects;
  */
 
 public class Scopes extends LinkedHashMap<String, String> {
-    /**
-	 *
-	 */
-	private static final long serialVersionUID = -7422763172095006854L;
 
-	public Scopes() {
+    /**
+     *
+     */
+    private static final long serialVersionUID = -7422763172095006854L;
+
+    public Scopes() {
     }
-	/** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
-	 *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
+
+    /** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
+     *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
     private java.util.Map<String, Object> extensions = null;
 
     public Scopes addString(final String name, final String item) {
@@ -39,7 +41,7 @@ public class Scopes extends LinkedHashMap<String, String> {
         }
         final Scopes scopes = (Scopes) o;
         return Objects.equals(this.extensions, scopes.extensions) &&
-                super.equals(o);
+                        super.equals(o);
     }
 
     @Override
@@ -107,4 +109,3 @@ public class Scopes extends LinkedHashMap<String, String> {
     }
 
 }
-

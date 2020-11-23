@@ -5,14 +5,20 @@ package com.arkea.asyncapi.v2.models.examples;
  */
 
 public class Example {
+
     private String summary = null;
+
     private String description = null;
+
     private Object value = null;
+
     private String externalValue = null;
+
     /** Allows for an external definition of this channel item. */
     private String $ref = null;
-	/** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
-	 *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
+
+    /** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
+     *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
     private java.util.Map<String, Object> extensions = null;
 
     /**
@@ -197,4 +203,3 @@ public class Example {
     }
 
 }
-

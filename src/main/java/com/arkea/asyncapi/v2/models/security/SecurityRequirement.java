@@ -10,18 +10,19 @@ import java.util.Objects;
  * @see "https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#securityRequirementObject"
  */
 public class SecurityRequirement<K> extends LinkedList<String> {
-    /**
-	 *
-	 */
-	private static final long serialVersionUID = 8279374414896857319L;
 
-	public SecurityRequirement() {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 8279374414896857319L;
+
+    public SecurityRequirement() {
     }
 
     public SecurityRequirement<K> addItem(final String item) {
-    	if(SecurityScheme.In.isIn(item)) {
-    		this.add(item);
-    	}
+        if (SecurityScheme.In.isIn(item)) {
+            this.add(item);
+        }
         return this;
     }
 
@@ -67,4 +68,3 @@ public class SecurityRequirement<K> extends LinkedList<String> {
     }
 
 }
-

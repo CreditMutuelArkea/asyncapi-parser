@@ -9,14 +9,18 @@ import java.util.Objects;
  */
 
 public class Contact {
-	/** The identifying name of the contact person/organization. */
+
+    /** The identifying name of the contact person/organization. */
     private String name = null;
+
     /** The URL pointing to the contact information. MUST be in the format of a URL. */
     private String url = null;
+
     /** The email address of the contact person/organization. MUST be in the format of an email address. */
     private String email = null;
-	/** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
-	 *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
+
+    /** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
+     *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
     private java.util.Map<String, Object> extensions = null;
 
     /**
@@ -62,9 +66,9 @@ public class Contact {
         }
         final Contact contact = (Contact) o;
         return Objects.equals(this.name, contact.name) &&
-                Objects.equals(this.url, contact.url) &&
-                Objects.equals(this.email, contact.email) &&
-                Objects.equals(this.extensions, contact.extensions);
+                        Objects.equals(this.url, contact.url) &&
+                        Objects.equals(this.email, contact.email) &&
+                        Objects.equals(this.extensions, contact.extensions);
     }
 
     @Override
@@ -119,4 +123,3 @@ public class Contact {
     }
 
 }
-

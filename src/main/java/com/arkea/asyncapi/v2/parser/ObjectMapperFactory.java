@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 public class ObjectMapperFactory {
+
     public static ObjectMapper createJson() {
         return createJson(true, true);
     }
@@ -39,13 +40,13 @@ public class ObjectMapperFactory {
 
     private static JsonFactory createJsonFactory() {
         return new JsonFactoryBuilder()
-          .enable(StreamReadFeature.STRICT_DUPLICATE_DETECTION)
-          .build();
+                        .enable(StreamReadFeature.STRICT_DUPLICATE_DETECTION)
+                        .build();
     }
 
     private static JsonFactory createYamlFactory() {
         return YAMLFactory.builder()
-          .enable(StreamReadFeature.STRICT_DUPLICATE_DETECTION)
-          .build();
+                        .enable(StreamReadFeature.STRICT_DUPLICATE_DETECTION)
+                        .build();
     }
 }

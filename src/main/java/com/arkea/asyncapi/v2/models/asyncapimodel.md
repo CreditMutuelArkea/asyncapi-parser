@@ -8,11 +8,11 @@ Part of this content has been based on [OpenAPI/Swagger-parser project](https://
 
 ## Introduction
 
-The AsyncAPI Model is an implementation of the [AsyncAPI Specification](https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md).  
+The AsyncAPI Model is an implementation of the [AsyncAPI Specification](https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md).
 
 Many protocols are fully implemented but not all.
 
-This parser project was initially  done for Arkéa project. 
+This parser project was initially  done for Arkéa project.
 
 It was divided in two different parts : model and parser. You can find below simplified parts of [AsyncAPI Specification](https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md) used in Arkéa project.
 
@@ -22,7 +22,7 @@ com.arkea.asyncapi.v2.parser.AsyncAPIV2Parser.readContents(FileAsString)
 
 You can use Yaml or Json file in inputStream.
 
-The result return the parsed result (based on com.arkea.asyncapi.v2.models.AsyncAPI) and messages (an array of string). Messages is empty if no errors happens during the parsing process.   
+The result return the parsed result (based on com.arkea.asyncapi.v2.models.AsyncAPI) and messages (an array of string). Messages is empty if no errors happens during the parsing process.
 
 Following section is directly taken from  [AsyncAPI Specification](https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md) and is simplified in order to start easily.
 
@@ -34,9 +34,9 @@ Following section is directly taken from  [AsyncAPI Specification](https://githu
   - [Message](#definitionsMessage)
   - [Channel](#definitionsChannel)
 - [Specification](#specification)
-	- [Format](#format)
-	- [Schema](#schema)
-	    - [AsyncAPI Object](#A2SObject)
+    - [Format](#format)
+    - [Schema](#schema)
+        - [AsyncAPI Object](#A2SObject)
       - [AsyncAPI Version String](#A2SVersionString)
       - [Info Object](#infoObject)
       - [Channels Object](#channelsObject)
@@ -59,13 +59,13 @@ Following section is directly taken from  [AsyncAPI Specification](https://githu
 An application is any kind of computer program or a group of them. It MUST be a [producer](#definitionsProducer), a [consumer](#definitionsConsumer) or both. An application MAY be a microservice, IoT device (sensor), mainframe process, etc. An application MUST also use a protocol supported by the server in order to connect and exchange [messages](#definitionsMessage).
 
 #### <a name="definitionsProducer"></a>Producer
-A producer is a type of application, connected to a server, that is creating [messages](#definitionsMessage) and addressing them to [channels](#definitionsChannel). A producer MAY be publishing to multiple channels depending on the server, protocol, and use-case pattern. 
+A producer is a type of application, connected to a server, that is creating [messages](#definitionsMessage) and addressing them to [channels](#definitionsChannel). A producer MAY be publishing to multiple channels depending on the server, protocol, and use-case pattern.
 
 #### <a name="definitionsConsumer"></a>Consumer
-A consumer is a type of application, that is consuming [messages](#definitionsMessage) from [channels](#definitionsChannel). A consumer MAY be consuming from multiple channels depending on the server, protocol, and the use-case pattern. 
+A consumer is a type of application, that is consuming [messages](#definitionsMessage) from [channels](#definitionsChannel). A consumer MAY be consuming from multiple channels depending on the server, protocol, and the use-case pattern.
 
 #### <a name="definitionsMessage"></a>Message
-A message is the mechanism by which information is exchanged via a channel between servers and applications. A message MUST contain a payload and MAY also contain headers. The payload contains the data, defined by the application, which MUST be serialized into a format (JSON, XML, Avro, binary, etc.). Since a message is a generic mechanism, it can support multiple interaction patterns such as event, command, request, or response. 
+A message is the mechanism by which information is exchanged via a channel between servers and applications. A message MUST contain a payload and MAY also contain headers. The payload contains the data, defined by the application, which MUST be serialized into a format (JSON, XML, Avro, binary, etc.). Since a message is a generic mechanism, it can support multiple interaction patterns such as event, command, request, or response.
 
 #### <a name="definitionsChannel"></a>Channel
 A channel is an addressable component, made available by the server, for the organization of [messages](#definitionsMessage). [Producer](#definitionsProducer) applications send messages to channels and [consumer](#definitionsConsumer) applications consume messages from channels. Servers MAY support many channel instances, allowing messages with different content to be addressed to different channels. Depending on the server implementation, the channel MAY be included in the message via protocol-defined headers.
@@ -149,7 +149,7 @@ Channels are also known as "topics", "routing keys", "event types" or "paths".
 
 Field Pattern | Type | Description
 ---|:---:|---
-<a name="channelsObjectChannel"></a>{channel} | [Channel Item Object](#channelItemObject) | A relative path to an individual channel. The field name MUST be in the form of a [RFC 6570 URI template](https://tools.ietf.org/html/rfc6570). Query parameters and fragments SHALL NOT be used, instead use bindings to define them. 
+<a name="channelsObjectChannel"></a>{channel} | [Channel Item Object](#channelItemObject) | A relative path to an individual channel. The field name MUST be in the form of a [RFC 6570 URI template](https://tools.ietf.org/html/rfc6570). Query parameters and fragments SHALL NOT be used, instead use bindings to define them.
 
 ##### Channels Object Example
 
@@ -284,7 +284,7 @@ description | `string` | A verbose explanation of the operation. [CommonMark syn
 tags | [Tag Object] | A list of tags for API documentation control. Tags can be used for logical grouping of operations.
 externalDocs | External Documentation Object | Additional external documentation for this operation.
 bindings | Operation Bindings Object | A map where the keys describe the name of the protocol and the values describe protocol-specific definitions for the operation.
-traits | [Operation Trait Object &#124; Reference Object ] | A list of traits to apply to the operation object. Traits MUST be merged into the operation object using the [JSON Merge Patch](https://tools.ietf.org/html/rfc7386) algorithm in the same order they are defined here. 
+traits | [Operation Trait Object &#124; Reference Object ] | A list of traits to apply to the operation object. Traits MUST be merged into the operation object using the [JSON Merge Patch](https://tools.ietf.org/html/rfc7386) algorithm in the same order they are defined here.
 message | [[Message Object](#messageObject) &#124; [Reference Object](#referenceObject)] | A definition of the message that will be published or received on this channel. `oneOf` is allowed here to specify multiple messages, however, **a message MUST be valid only against one of the referenced message objects.**
 
 This object can be extended with [Specification Extensions](#specificationExtensions).
@@ -659,15 +659,15 @@ Field Name | Type | Description
 ---|:---|---
 schemas | Map[`string`, [Schema Object](#schemaObject) \| [Reference Object](#referenceObject)] | An object to hold reusable [Schema Objects](#schemaObject).
 messages | Map[`string`, [Message Object](#messageObject) \| [Reference Object](#referenceObject)] | An object to hold reusable [Message Objects](#messageObject).
-securitySchemes| Map[`string`, Security Scheme Object \| [Reference Object](#referenceObject)] | An object to hold reusable Security Scheme Objects 
+securitySchemes| Map[`string`, Security Scheme Object \| [Reference Object](#referenceObject)] | An object to hold reusable Security Scheme Objects
 parameters | Map[`string`, [Parameter Object](#parameterObject) \| [Reference Object](#referenceObject)] | An object to hold reusable [Parameter Objects](#parameterObject).
-correlationIds | Map[`string`, Correlation ID Object] | An object to hold reusable Correlation ID Objects. 
-operationTraits | Map[`string`, Operation Trait Object]  | An object to hold reusable Operation Trait Objects. 
-messageTraits | Map[`string`, Message Trait Object]  | An object to hold reusable Message Trait Objects. 
-serverBindings | Map[`string`, Server Binding Object]  | An object to hold reusable Server Binding Objects. 
-channelBindings | Map[`string`, Channel Binding Object]  | An object to hold reusable Channel Binding Objects. 
-operationBindings | Map[`string`, Operation Binding Object]                      | An object to hold reusable Operation Binding Objects. 
-messageBindings | Map[`string`, Message Binding Object] | An object to hold reusable Message Binding Objects. 
+correlationIds | Map[`string`, Correlation ID Object] | An object to hold reusable Correlation ID Objects.
+operationTraits | Map[`string`, Operation Trait Object]  | An object to hold reusable Operation Trait Objects.
+messageTraits | Map[`string`, Message Trait Object]  | An object to hold reusable Message Trait Objects.
+serverBindings | Map[`string`, Server Binding Object]  | An object to hold reusable Server Binding Objects.
+channelBindings | Map[`string`, Channel Binding Object]  | An object to hold reusable Channel Binding Objects.
+operationBindings | Map[`string`, Operation Binding Object]                      | An object to hold reusable Operation Binding Objects.
+messageBindings | Map[`string`, Message Binding Object] | An object to hold reusable Message Binding Objects.
 
 This object can be extended with [Specification Extensions](#specificationExtensions).
 
@@ -1284,7 +1284,7 @@ schemas:
 
 ### <a name="correlationIdObject"></a>Correlation ID Object
 
-An object that specifies an identifier at design time that can used for message tracing and correlation. 
+An object that specifies an identifier at design time that can used for message tracing and correlation.
 
 For specifying and computing the location of a Correlation ID, a [runtime expression](#runtimeExpression) is used.
 

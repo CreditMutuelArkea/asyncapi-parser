@@ -13,12 +13,15 @@ import java.util.Objects;
  *
  */
 public class ExternalDocumentation {
-	/** A short description of the target documentation. CommonMark syntax can be used for rich text representation. */
+
+    /** A short description of the target documentation. CommonMark syntax can be used for rich text representation. */
     private String description = null;
+
     /** Required. The URL for the target documentation. Value MUST be in the format of a URL. */
     private String url = null;
-	/** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
-	 *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
+
+    /** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
+     *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
     private java.util.Map<String, Object> extensions = null;
 
     /**
@@ -50,7 +53,6 @@ public class ExternalDocumentation {
         return this.url;
     }
 
-
     /**
      * Set the url property of ExternalDocumentation instance.
      *
@@ -67,7 +69,7 @@ public class ExternalDocumentation {
      * @return Map<String, Object> extensions
      */
     public java.util.Map<String, Object> getExtensions() {
-    	return this.extensions;
+        return this.extensions;
     }
 
     /**
@@ -77,8 +79,8 @@ public class ExternalDocumentation {
      * @return ExternalDocumentation this
      */
     public ExternalDocumentation extensions(final java.util.Map<String, Object> extensions) {
-    	this.extensions = extensions;
-    	return this;
+        this.extensions = extensions;
+        return this;
     }
 
     @Override
@@ -91,15 +93,14 @@ public class ExternalDocumentation {
         }
         final ExternalDocumentation externalDocumentation = (ExternalDocumentation) o;
         return Objects.equals(this.description, externalDocumentation.description) &&
-                Objects.equals(this.url, externalDocumentation.url) &&
-                Objects.equals(this.extensions, externalDocumentation.extensions);
+                        Objects.equals(this.url, externalDocumentation.url) &&
+                        Objects.equals(this.extensions, externalDocumentation.extensions);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.description, this.url, this.extensions);
     }
-
 
     @Override
     public String toString() {
@@ -124,4 +125,3 @@ public class ExternalDocumentation {
     }
 
 }
-

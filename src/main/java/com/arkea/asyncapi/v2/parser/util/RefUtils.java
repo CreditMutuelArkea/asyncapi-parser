@@ -17,8 +17,6 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import com.arkea.asyncapi.v2.parser.models.RefFormat;
 
-
-
 public class RefUtils {
 
     private static final String REFERENCE_SEPARATOR = "#/";
@@ -38,13 +36,12 @@ public class RefUtils {
         final String file = refParts[0];
         final String definitionPath = refParts.length == 2 ? refParts[1] : null;
 
-
         String plausibleName;
 
-        if (definitionPath != null) { //the name will come from the last element of the definition path
+        if (definitionPath != null) { // the name will come from the last element of the definition path
             final String[] jsonPathElements = definitionPath.split("/");
             plausibleName = jsonPathElements[jsonPathElements.length - 1];
-        } else { //no definition path, so we must come up with a name from the file
+        } else { // no definition path, so we must come up with a name from the file
             final String[] filePathElements = file.split("/");
             plausibleName = filePathElements[filePathElements.length - 1];
 
@@ -60,9 +57,9 @@ public class RefUtils {
             return Optional.empty();
         }
         return Optional.of(ref.split(REFERENCE_SEPARATOR))
-            .filter(it -> it.length == 2)
-            .map(it -> it[0])
-            .filter(it -> !it.isEmpty());
+                        .filter(it -> it.length == 2)
+                        .map(it -> it[0])
+                        .filter(it -> !it.isEmpty());
     }
 
     public static boolean isAnExternalRefFormat(final RefFormat refFormat) {
@@ -72,11 +69,11 @@ public class RefUtils {
     public static RefFormat computeRefFormat(String ref) {
         RefFormat result = RefFormat.INTERNAL;
         ref = mungedRef(ref);
-        if(ref.startsWith("http")||ref.startsWith("https")) {
+        if (ref.startsWith("http") || ref.startsWith("https")) {
             result = RefFormat.URL;
-        } else if(ref.startsWith(REFERENCE_SEPARATOR)) {
+        } else if (ref.startsWith(REFERENCE_SEPARATOR)) {
             result = RefFormat.INTERNAL;
-        } else if(ref.startsWith(".") || ref.startsWith("/") || ref.indexOf(REFERENCE_SEPARATOR) > 0) {
+        } else if (ref.startsWith(".") || ref.startsWith("/") || ref.indexOf(REFERENCE_SEPARATOR) > 0) {
             result = RefFormat.RELATIVE;
         }
 
@@ -85,19 +82,18 @@ public class RefUtils {
 
     public static String mungedRef(final String refString) {
         // Ref: IETF RFC 3966, Section 5.2.2
-        if (!refString.contains(":") &&   // No scheme
-                !refString.startsWith("#") && // Path is not empty
-                !refString.startsWith("/") && // Path is not absolute
-                !refString.contains("$") &&
-                refString.indexOf(".") > 0) { // Path does not start with dot but contains "." (file extension)
+        if (!refString.contains(":") && // No scheme
+                        !refString.startsWith("#") && // Path is not empty
+                        !refString.startsWith("/") && // Path is not absolute
+                        !refString.contains("$") &&
+                        refString.indexOf(".") > 0) { // Path does not start with dot but contains "." (file extension)
             return "./" + refString;
         }
         return refString;
     }
 
-
     public static String readExternalUrlRef(final String file, final RefFormat refFormat,
-                                            final String rootPath) {
+                    final String rootPath) {
 
         if (!RefUtils.isAnExternalRefFormat(refFormat)) {
             throw new RuntimeException("Ref is not external");
@@ -109,7 +105,7 @@ public class RefUtils {
             if (refFormat == RefFormat.URL) {
                 result = RemoteUrl.urlToString(file);
             } else {
-                //its assumed to be a relative ref
+                // its assumed to be a relative ref
                 final String url = buildUrl(rootPath, file);
 
                 return readExternalRef(url, RefFormat.URL, null);
@@ -123,7 +119,7 @@ public class RefUtils {
     }
 
     public static String readExternalClasspathRef(final String file, final RefFormat refFormat,
-                                                  final String rootPath) {
+                    final String rootPath) {
 
         if (!RefUtils.isAnExternalRefFormat(refFormat)) {
             throw new RuntimeException("Ref is not external");
@@ -135,12 +131,12 @@ public class RefUtils {
             if (refFormat == RefFormat.URL) {
                 result = RemoteUrl.urlToString(file);
             } else {
-                //its assumed to be a relative ref
-//                String pathRef = ExternalRefProcessor.join(rootPath, file);
-//
-//                result = ClasspathHelper.loadFileFromClasspath(pathRef);
-            	//TOD gestion des external ref
-            	throw new NotImplementedException("ExternalClasspathRef not implemented");
+                // its assumed to be a relative ref
+                // String pathRef = ExternalRefProcessor.join(rootPath, file);
+                //
+                // result = ClasspathHelper.loadFileFromClasspath(pathRef);
+                // TOD gestion des external ref
+                throw new NotImplementedException("ExternalClasspathRef not implemented");
             }
         } catch (final Exception e) {
             throw new RuntimeException("Unable to load " + refFormat + " ref: " + file, e);
@@ -152,51 +148,51 @@ public class RefUtils {
 
     public static String buildUrl(final String rootPath, final String relativePath) {
         final String[] rootPathParts = rootPath.split("/");
-        final String [] relPathParts = relativePath.split("/");
+        final String[] relPathParts = relativePath.split("/");
 
-        if(rootPath == null || relativePath == null) {
+        if (rootPath == null || relativePath == null) {
             return null;
         }
 
         int trimRoot = 0;
         int trimRel = 0;
 
-        if(!"".equals(rootPathParts[rootPathParts.length - 1])) {
+        if (!"".equals(rootPathParts[rootPathParts.length - 1])) {
             trimRoot = 1;
         }
-        if("".equals(relPathParts[0])) {
-            trimRel = 1; trimRoot = rootPathParts.length-3;
+        if ("".equals(relPathParts[0])) {
+            trimRel = 1;
+            trimRoot = rootPathParts.length - 3;
         }
         for (final String rootPathPart : rootPathParts) {
-            if("".equals(rootPathPart)) {
+            if ("".equals(rootPathPart)) {
                 trimRel += 1;
-            }
-            else {
+            } else {
                 break;
             }
         }
         for (final String relPathPart : relPathParts) {
-            if(".".equals(relPathPart)) {
+            if (".".equals(relPathPart)) {
                 trimRel += 1;
-            }
-            else if ("..".equals(relPathPart)) {
-                trimRel += 1; trimRoot += 1;
+            } else if ("..".equals(relPathPart)) {
+                trimRel += 1;
+                trimRoot += 1;
             }
         }
 
-        final String [] outputParts = new String[rootPathParts.length + relPathParts.length - trimRoot - trimRel];
+        final String[] outputParts = new String[rootPathParts.length + relPathParts.length - trimRoot - trimRel];
         System.arraycopy(rootPathParts, 0, outputParts, 0, rootPathParts.length - trimRoot);
         System.arraycopy(relPathParts,
-                trimRel,
-                outputParts,
-                rootPathParts.length - trimRoot,
-                relPathParts.length - trimRel);
+                        trimRel,
+                        outputParts,
+                        rootPathParts.length - trimRoot,
+                        relPathParts.length - trimRel);
 
         return StringUtils.join(outputParts, "/");
     }
 
     public static String readExternalRef(final String file, final RefFormat refFormat,
-                                         Path parentDirectory) {
+                    Path parentDirectory) {
 
         if (!RefUtils.isAnExternalRefFormat(refFormat)) {
             throw new RuntimeException("Ref is not external");
@@ -208,10 +204,10 @@ public class RefUtils {
             if (refFormat == RefFormat.URL) {
                 result = RemoteUrl.urlToString(file);
             } else {
-                //its assumed to be a relative file ref
+                // its assumed to be a relative file ref
                 final Path pathToUse = parentDirectory.resolve(file).normalize();
 
-                if(Files.exists(pathToUse)) {
+                if (Files.exists(pathToUse)) {
                     result = readAll(pathToUse);
                 } else {
                     String url = file;
@@ -230,18 +226,17 @@ public class RefUtils {
                     }
                     final Path pathToUse2 = parentDirectory.resolve(url).normalize();
 
-                    if(Files.exists(pathToUse2)) {
+                    if (Files.exists(pathToUse2)) {
                         result = readAll(pathToUse2);
                     }
                 }
-                if (result == null){
+                if (result == null) {
                     result = ClasspathHelper.loadFileFromClasspath(file);
                 }
 
-
             }
         } catch (final Exception e) {
-            throw new RuntimeException("Unable to load " + refFormat + " ref: " + file + " path: "+parentDirectory, e);
+            throw new RuntimeException("Unable to load " + refFormat + " ref: " + file + " path: " + parentDirectory, e);
         }
 
         return result;

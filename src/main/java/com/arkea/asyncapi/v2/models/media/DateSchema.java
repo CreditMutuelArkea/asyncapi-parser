@@ -38,7 +38,7 @@ public class DateSchema extends Schema<Date> {
                 if (value instanceof Date) {
                     return (Date) value;
                 } else if (value instanceof String) {
-                    return new SimpleDateFormat("yyyy-MM-dd Z").parse((String)value + " UTC");
+                    return new SimpleDateFormat("yyyy-MM-dd Z").parse((String) value + " UTC");
                 }
             } catch (final Exception e) {
             }
@@ -76,4 +76,3 @@ public class DateSchema extends Schema<Date> {
         return sb.toString();
     }
 }
-

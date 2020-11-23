@@ -1,6 +1,5 @@
 package com.arkea.asyncapi.v2.parser.util;
 
-
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -12,15 +11,15 @@ public class ClasspathHelper {
 
         InputStream inputStream = ClasspathHelper.class.getResourceAsStream(location);
 
-        if(inputStream == null) {
+        if (inputStream == null) {
             inputStream = ClasspathHelper.class.getClassLoader().getResourceAsStream(location);
         }
 
-        if(inputStream == null) {
+        if (inputStream == null) {
             inputStream = ClassLoader.getSystemResourceAsStream(location);
         }
 
-        if(inputStream != null) {
+        if (inputStream != null) {
             try {
                 return IOUtils.toString(inputStream);
             } catch (final IOException e) {

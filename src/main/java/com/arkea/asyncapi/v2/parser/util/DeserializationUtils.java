@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.JsonNode;
  * Created by russellb337 on 7/14/15.
  */
 public class DeserializationUtils {
+
     public static JsonNode deserializeIntoTree(final String contents, final String fileOrHost) {
         JsonNode result;
 
@@ -31,7 +32,7 @@ public class DeserializationUtils {
 
         boolean isJson = false;
 
-        if(contents instanceof String && isJson((String)contents)) {
+        if (contents instanceof String && isJson((String) contents)) {
             isJson = true;
         }
 

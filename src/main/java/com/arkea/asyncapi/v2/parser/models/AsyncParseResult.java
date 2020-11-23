@@ -6,7 +6,9 @@ import java.util.List;
 import com.arkea.asyncapi.v2.models.AsyncAPI;
 
 public class AsyncParseResult {
+
     private List<String> messages = null;
+
     private AsyncAPI asyncAPI;
 
     /**
@@ -44,7 +46,7 @@ public class AsyncParseResult {
         this.asyncAPI = asyncAPI;
     }
 
-    public static AsyncParseResult ofError(final String message){
+    public static AsyncParseResult ofError(final String message) {
         final AsyncParseResult result = new AsyncParseResult();
         result.setMessages(Collections.singletonList(message));
         return result;

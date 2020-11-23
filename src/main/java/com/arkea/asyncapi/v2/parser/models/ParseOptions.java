@@ -1,12 +1,19 @@
 package com.arkea.asyncapi.v2.parser.models;
 
 public class ParseOptions {
+
     private boolean resolve;
+
     private boolean resolveCombinators = true;
+
     private boolean resolveFully;
+
     private boolean flatten;
+
     private boolean flattenComposedSchemas;
+
     private boolean camelCaseFlattenNaming;
+
     private boolean skipMatches;
 
     public boolean isResolve() {
@@ -33,9 +40,13 @@ public class ParseOptions {
         this.resolveFully = resolveFully;
     }
 
-    public boolean isFlatten() { return this.flatten; }
+    public boolean isFlatten() {
+        return this.flatten;
+    }
 
-    public void setFlatten(final boolean flatten) { this.flatten = flatten; }
+    public void setFlatten(final boolean flatten) {
+        this.flatten = flatten;
+    }
 
     public boolean isSkipMatches() {
         return this.skipMatches;
@@ -52,6 +63,7 @@ public class ParseOptions {
     public void setFlattenComposedSchemas(final boolean flattenComposedSchemas) {
         this.flattenComposedSchemas = flattenComposedSchemas;
     }
+
     public boolean isCamelCaseFlattenNaming() {
         return this.camelCaseFlattenNaming;
     }

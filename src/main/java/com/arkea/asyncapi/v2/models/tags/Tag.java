@@ -1,28 +1,29 @@
 package com.arkea.asyncapi.v2.models.tags;
 
-
 import java.util.LinkedList;
 import java.util.Objects;
 
 import com.arkea.asyncapi.v2.models.ExternalDocumentation;
-
 
 /**
  * Tag
  *
  * @see "https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#tagsObject"
  */
-//TODO extends LinkedList directement ?
-public class Tag extends LinkedList{
+// TODO extends LinkedList directement ?
+public class Tag extends LinkedList {
 
-	/** Required. The name of the tag. */
+    /** Required. The name of the tag. */
     private String name = null;
+
     /** A short description for the tag. CommonMark syntax can be used for rich text representation. */
     private String description = null;
+
     /** Additional external documentation for this tag. */
     private ExternalDocumentation externalDocs = null;
-	/** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
-	 *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
+
+    /** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
+     *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
     private java.util.Map<String, Object> extensions = null;
 
     /**
@@ -92,9 +93,9 @@ public class Tag extends LinkedList{
         }
         final Tag tag = (Tag) o;
         return Objects.equals(this.name, tag.name) &&
-                Objects.equals(this.description, tag.description) &&
-                Objects.equals(this.externalDocs, tag.externalDocs) &&
-                Objects.equals(this.extensions, tag.extensions);
+                        Objects.equals(this.description, tag.description) &&
+                        Objects.equals(this.externalDocs, tag.externalDocs) &&
+                        Objects.equals(this.extensions, tag.extensions);
     }
 
     @Override
@@ -149,4 +150,3 @@ public class Tag extends LinkedList{
     }
 
 }
-

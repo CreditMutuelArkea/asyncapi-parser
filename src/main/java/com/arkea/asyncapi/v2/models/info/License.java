@@ -9,12 +9,15 @@ import java.util.Objects;
  */
 
 public class License {
-	/** Required. The license name used for the API. */
+
+    /** Required. The license name used for the API. */
     private String name = null;
+
     /** A URL to the license used for the API. MUST be in the format of a URL. */
     private String url = null;
-	/** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
-	 *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
+
+    /** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
+     *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
     private java.util.Map<String, Object> extensions = null;
 
     /**
@@ -84,13 +87,13 @@ public class License {
      * @param Object value
      */
     public void addExtension(final String name, final Object value) {
-    	if (name == null || name.isEmpty() || !name.startsWith("x-")) {
-    		return;
-    	}
-    	if (this.extensions == null) {
-    		this.extensions = new java.util.LinkedHashMap<>();
-    	}
-    	this.extensions.put(name, value);
+        if (name == null || name.isEmpty() || !name.startsWith("x-")) {
+            return;
+        }
+        if (this.extensions == null) {
+            this.extensions = new java.util.LinkedHashMap<>();
+        }
+        this.extensions.put(name, value);
     }
 
     /**
@@ -99,7 +102,7 @@ public class License {
      * @param Map<String, Object> extensions
      */
     public void setExtensions(final java.util.Map<String, Object> extensions) {
-    	this.extensions = extensions;
+        this.extensions = extensions;
     }
 
     /**
@@ -109,8 +112,8 @@ public class License {
      * @return License instance
      */
     public License extensions(final java.util.Map<String, Object> extensions) {
-    	this.extensions = extensions;
-    	return this;
+        this.extensions = extensions;
+        return this;
     }
 
     @Override
@@ -123,15 +126,14 @@ public class License {
         }
         final License license = (License) o;
         return Objects.equals(this.name, license.name) &&
-                Objects.equals(this.url, license.url) &&
-                Objects.equals(this.extensions, license.extensions);
+                        Objects.equals(this.url, license.url) &&
+                        Objects.equals(this.extensions, license.extensions);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.name, this.url, this.extensions);
     }
-
 
     @Override
     public String toString() {
@@ -156,4 +158,3 @@ public class License {
     }
 
 }
-

@@ -10,34 +10,30 @@ import org.apache.commons.lang3.EnumUtils;
 
 public class SecurityScheme {
 
-	/**
-	 * Gets or Sets in
-	 * The location of the API key
-	 */
-	public enum In {
-		// Valid values are "user" and "password" for apiKey and "query", "header" or "cookie" for httpApiKey
-		USER("user"),
-		PASSWORD("password"),
-		QUERY("query"),
-		HEARDER("header"),
-		COOKIE("cookie");
+    /**
+     * Gets or Sets in
+     * The location of the API key
+     */
+    public enum In {
 
+        // Valid values are "user" and "password" for apiKey and "query", "header" or "cookie" for httpApiKey
+        USER("user"), PASSWORD("password"), QUERY("query"), HEARDER("header"), COOKIE("cookie");
 
-		private final String value;
+        private final String value;
 
-		In(final String value) {
-			this.value = value;
-		}
+        In(final String value) {
+            this.value = value;
+        }
 
-		@Override
-		public String toString() {
-			return String.valueOf(this.value);
-		}
+        @Override
+        public String toString() {
+            return String.valueOf(this.value);
+        }
 
-		public static Boolean isIn(final String word) {
-			return EnumUtils.isValidEnum(In.class, word);
-		}
-	}
+        public static Boolean isIn(final String word) {
+            return EnumUtils.isValidEnum(In.class, word);
+        }
+    }
 
     /**
      * Gets or Sets type
@@ -45,16 +41,7 @@ public class SecurityScheme {
      */
     public enum Type {
 
-        APIKEY("apiKey"),
-        HTTP("http"),
-        OAUTH2("oauth2"),
-        OPENIDCONNECT("openIdConnect"),
-        USERPASSWORD("userPassword"),
-        X509("X509"),
-        SYMMETRICENCRYPTION("symmetricEncryption"),
-    	ASYMMETRICENCRYPTION("asymmetricEncryption"),
-    	HTTPAPIKEY("httpApiKey");
-
+        APIKEY("apiKey"), HTTP("http"), OAUTH2("oauth2"), OPENIDCONNECT("openIdConnect"), USERPASSWORD("userPassword"), X509("X509"), SYMMETRICENCRYPTION("symmetricEncryption"), ASYMMETRICENCRYPTION("asymmetricEncryption"), HTTPAPIKEY("httpApiKey");
 
         private final String value;
 
@@ -68,48 +55,50 @@ public class SecurityScheme {
         }
     }
 
-
     private String $ref = null;
+
     private Type type = null;
+
     private String description = null;
+
     private String name = null;
+
     private In in = null;
+
     private String scheme = null;
+
     private String bearerFormat = null;
+
     private OAuthFlows flows = null;
+
     private String openIdConnectUrl = null;
-	/** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
-	 *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
+
+    /** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
+     *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
     private java.util.Map<String, Object> extensions = null;
 
+    public SecurityScheme $ref(final String $ref) {
 
+        set$ref($ref);
+        return this;
+    }
 
+    /**
+     * returns the $ref property from a MessageTrait instance.
+     *
+     * @return String $ref
+     **/
+    public String get$ref() {
+        return this.$ref;
+    }
 
-
-	public SecurityScheme $ref(final String $ref) {
-
-		set$ref($ref);
-		return this;
-	}
-
-	/**
-	 * returns the $ref property from a MessageTrait instance.
-	 *
-	 * @return String $ref
-	 **/
-	public String get$ref() {
-		return this.$ref;
-	}
-
-	// TODO verifier si c'est la bonne ref
-	public void set$ref(String $ref) {
-		if ($ref != null && $ref.indexOf('.') == -1 && $ref.indexOf('/') == -1) {
-			$ref = "#/components/securityschemes/" + $ref;
-		}
-		this.$ref = $ref;
-	}
-
-
+    // TODO verifier si c'est la bonne ref
+    public void set$ref(String $ref) {
+        if ($ref != null && $ref.indexOf('.') == -1 && $ref.indexOf('/') == -1) {
+            $ref = "#/components/securityschemes/" + $ref;
+        }
+        this.$ref = $ref;
+    }
 
     /**
      * returns the type property from a SecurityScheme instance.
@@ -367,4 +356,3 @@ public class SecurityScheme {
     }
 
 }
-

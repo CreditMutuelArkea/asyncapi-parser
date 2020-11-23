@@ -9,8 +9,11 @@ import java.util.Objects;
  */
 
 public class ComposedSchema extends Schema<Object> {
+
     private List<Schema> allOf = null;
+
     private List<Schema> anyOf = null;
+
     private List<Schema> oneOf = null;
 
     /**
@@ -104,9 +107,9 @@ public class ComposedSchema extends Schema<Object> {
         }
         final ComposedSchema allOfSchema = (ComposedSchema) o;
         return Objects.equals(this.allOf, allOfSchema.allOf) &&
-                Objects.equals(this.anyOf, allOfSchema.anyOf) &&
-                Objects.equals(this.oneOf, allOfSchema.oneOf) &&
-                super.equals(o);
+                        Objects.equals(this.anyOf, allOfSchema.anyOf) &&
+                        Objects.equals(this.oneOf, allOfSchema.oneOf) &&
+                        super.equals(o);
     }
 
     @Override

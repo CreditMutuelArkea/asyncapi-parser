@@ -9,12 +9,17 @@ import java.util.Objects;
  */
 
 public class OAuthFlow {
+
     private String authorizationUrl = null;
+
     private String tokenUrl = null;
+
     private String refreshUrl = null;
+
     private Scopes scopes = null;
-	/** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
-	 *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
+
+    /** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
+     *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
     private java.util.Map<String, Object> extensions = null;
 
     /**
@@ -103,10 +108,10 @@ public class OAuthFlow {
         }
         final OAuthFlow oauthFlow = (OAuthFlow) o;
         return Objects.equals(this.authorizationUrl, oauthFlow.authorizationUrl) &&
-                Objects.equals(this.tokenUrl, oauthFlow.tokenUrl) &&
-                Objects.equals(this.refreshUrl, oauthFlow.refreshUrl) &&
-                Objects.equals(this.scopes, oauthFlow.scopes) &&
-                Objects.equals(this.extensions, oauthFlow.extensions);
+                        Objects.equals(this.tokenUrl, oauthFlow.tokenUrl) &&
+                        Objects.equals(this.refreshUrl, oauthFlow.refreshUrl) &&
+                        Objects.equals(this.scopes, oauthFlow.scopes) &&
+                        Objects.equals(this.extensions, oauthFlow.extensions);
     }
 
     @Override
@@ -162,4 +167,3 @@ public class OAuthFlow {
     }
 
 }
-

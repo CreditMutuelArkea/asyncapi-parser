@@ -2,27 +2,41 @@ package com.arkea.asyncapi.v2.models.info;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * @see "https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#info-object"
  */
 
 public class Info {
-	/** Required. The title of the application. */
+
+    /** Required. The title of the application. */
     private String title = null;
+
     /** Required Provides the version of the application API (not to be confused with the specification version). */
     private String version = null;
+
     /** A short description of the application. CommonMark syntax can be used for rich text representation. */
     private String description = null;
+
     /** A URL to the Terms of Service for the API. MUST be in the format of a URL. */
     private String termsOfService = null;
+
     /** The contact information for the exposed API. */
     private Contact contact = null;
+
     /** The license information for the exposed API. */
     private License license = null;
-	/** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
-	 *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
+
+    /** Allows extensions to the AsyncAPI Schema. The field name MUST begin with x-, for example, x-internal-id.
+     *  The value can be null, a primitive, an array or an object. Can have any valid JSON format value. */
     private java.util.Map<String, Object> extensions = null;
 
+
+    /** The common x-view extension required by asyncapi-generator**/     
+    @JsonProperty("x-view")
+    private String xview;
+    
     /**
      * Returns the title property from an Info instance.
      *
@@ -207,7 +221,7 @@ public class Info {
      * @return Map<String, Object> extensions
      */
     public java.util.Map<String, Object> getExtensions() {
-    	return this.extensions;
+        return this.extensions;
     }
 
     /**
@@ -217,13 +231,13 @@ public class Info {
      * @param Object value
      */
     public void addExtension(final String name, final Object value) {
-    	if (name == null || name.isEmpty() || !name.startsWith("x-")) {
-    		return;
-    	}
-    	if (this.extensions == null) {
-    		this.extensions = new java.util.LinkedHashMap<>();
-    	}
-    	this.extensions.put(name, value);
+        if (name == null || name.isEmpty() || !name.startsWith("x-")) {
+            return;
+        }
+        if (this.extensions == null) {
+            this.extensions = new java.util.LinkedHashMap<>();
+        }
+        this.extensions.put(name, value);
     }
 
     /**
@@ -232,7 +246,7 @@ public class Info {
      * @param Map<String, Object> extensions
      */
     public void setExtensions(final java.util.Map<String, Object> extensions) {
-    	this.extensions = extensions;
+        this.extensions = extensions;
     }
 
     /**
@@ -242,8 +256,8 @@ public class Info {
      * @return Info instance
      */
     public Info extensions(final java.util.Map<String, Object> extensions) {
-    	this.extensions = extensions;
-    	return this;
+        this.extensions = extensions;
+        return this;
     }
 
     @Override
@@ -256,19 +270,18 @@ public class Info {
         }
         final Info info = (Info) o;
         return Objects.equals(this.title, info.title) &&
-                Objects.equals(this.description, info.description) &&
-                Objects.equals(this.termsOfService, info.termsOfService) &&
-                Objects.equals(this.contact, info.contact) &&
-                Objects.equals(this.license, info.license) &&
-                Objects.equals(this.version, info.version) &&
-                Objects.equals(this.extensions, info.extensions);
+                        Objects.equals(this.description, info.description) &&
+                        Objects.equals(this.termsOfService, info.termsOfService) &&
+                        Objects.equals(this.contact, info.contact) &&
+                        Objects.equals(this.license, info.license) &&
+                        Objects.equals(this.version, info.version) &&
+                        Objects.equals(this.extensions, info.extensions);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.title, this.description, this.termsOfService, this.contact, this.license, this.version, this.extensions);
     }
-
 
     @Override
     public String toString() {
@@ -296,5 +309,14 @@ public class Info {
         return o.toString().replace("\n", "\n    ");
     }
 
-}
+	public String getXview() {
+		return xview;
+	}
 
+	public void setXview(String xview) {
+		this.xview = xview;
+	}
+
+    
+    
+}

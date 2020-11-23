@@ -78,4 +78,3 @@ public class BinarySchema extends Schema<byte[]> {
         return sb.toString();
     }
 }
-
