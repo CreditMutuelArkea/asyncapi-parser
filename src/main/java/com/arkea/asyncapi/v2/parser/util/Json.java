@@ -28,12 +28,5 @@ public class Json {
             return null;
         }
     }
-
-    public static void prettyPrint(final Object o) {
-        try {
-            System.out.println(pretty().writeValueAsString(o).replace("\r", ""));
-        } catch (final Exception e) {
-            e.printStackTrace();
-        }
-    }
+    
 }
